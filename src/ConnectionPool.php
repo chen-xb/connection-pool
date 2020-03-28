@@ -345,10 +345,6 @@ class ConnectionPool implements ConnectionPoolInterface
      */
     public function close(): bool
     {
-        if ($this->closed) {
-            return true;
-        }
-
         Timer::clear($this->timerId);
 
         Coroutine::create(function () {
