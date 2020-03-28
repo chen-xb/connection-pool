@@ -103,7 +103,7 @@ class ConnectionPool implements ConnectionPoolInterface
      *
      * @var int
      */
-    protected $balanceTimerId;
+    protected $heartbeatId;
 
     /**
      * 创建连接池
@@ -198,7 +198,7 @@ class ConnectionPool implements ConnectionPoolInterface
      */
     protected function initHeartbeat()
     {
-        Timer::tick($this->idleCheckInterval * 1000, function () {
+        $this->heartbeatId = Timer::tick($this->idleCheckInterval * 1000, function () {
             $now = time();
             $validConnections = [];
             while (true) {
