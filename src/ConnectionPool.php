@@ -186,7 +186,7 @@ class ConnectionPool implements ConnectionPoolInterface
         Coroutine::create(function () {
             for ($i = 0; $i < $this->minActive; $i++) {
                 $connection = $this->createConnection();
-                if ($this->pool->push($connection, static::CHANNEL_TIMEOUT) === false) {
+                if (!$this->pool->push($connection, static::CHANNEL_TIMEOUT)) {
                     $this->removeConnection($connection);
                 }
             }
