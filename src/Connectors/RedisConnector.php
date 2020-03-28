@@ -21,7 +21,7 @@ class RedisConnector implements ConnectorInterface
 
         $connection['auth'] and $connection->auth($connection['auth']);
         $connection['db'] and $connection->select($connection['db']);
-        
+
         return $connection;
     }
 
