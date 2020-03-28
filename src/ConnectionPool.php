@@ -103,7 +103,7 @@ class ConnectionPool implements ConnectionPoolInterface
      *
      * @var int
      */
-    protected $heartbeatId;
+    protected $timerId;
 
     /**
      * 创建连接池
@@ -198,7 +198,7 @@ class ConnectionPool implements ConnectionPoolInterface
      */
     protected function initHeartbeat()
     {
-        $this->heartbeatId = Timer::tick($this->idleCheckInterval * 1000, function () {
+        $this->timerId = Timer::tick($this->idleCheckInterval * 1000, function () {
             $now = time();
             $validConnections = [];
             while (true) {
@@ -349,7 +349,7 @@ class ConnectionPool implements ConnectionPoolInterface
             return true;
         }
 
-        Timer::clear($this->idleCheckInterval);
+        Timer::clear($this->timerId);
 
         Coroutine::create(function () {
             while (true) {
