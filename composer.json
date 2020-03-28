@@ -1,0 +1,28 @@
+{
+    "name": "chenxb/connection-pool",
+    "description": "swoole coroutine pool",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://www.chenxiaobo.me",
+    "authors": [{
+        "name": "chenxiaobo",
+        "email": "346745114@qq.com",
+        "homepage": "https://www.chenxiaobo.me"
+    }],
+    "require": {
+        "php": "^7.2",
+        "ext-swoole": "^4.4.16",
+        "ext-pdo": "*",
+        "ext-redis": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.1",
+        "swoole/ide-helper": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chenxb\\ConnectionPool\\": "./src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
