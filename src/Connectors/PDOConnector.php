@@ -16,7 +16,8 @@ class PDOConnector implements ConnectorInterface
      */
     public function connect(array $config)
     {
-        $dsn = "{$config['type']}:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
+        $dsn = "{$config['type']}:host={$config['host']};port={$config['port']}";
+        $dsn = "{$dsn};dbname={$config['dbname']};charset={$config['charset']}";
 
         $connection = new \PDO($dsn, $config['username'], $config['password'], [
             \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,

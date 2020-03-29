@@ -291,7 +291,7 @@ class ConnectionPool implements ConnectionPoolInterface
      */
     public function push($connection): bool
     {
-        if ($this->connector->validate($connection)) {
+        if (!$this->connector->validate($connection)) {
             throw new RuntimeException('Connection of unexpected type.');
         }
 
